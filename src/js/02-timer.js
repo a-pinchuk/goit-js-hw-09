@@ -2,6 +2,8 @@ import flatpickr from 'flatpickr';
 import { Report } from 'notiflix/build/notiflix-report-aio';
 import 'flatpickr/dist/flatpickr.min.css';
 
+let offerTime;
+
 const ref = {
   input: document.querySelector('#datetime-picker'),
   start: document.querySelector('[data-start]'),
