@@ -16,7 +16,6 @@ const ref = {
 ref.start.setAttribute('disabled', '');
 ref.start.addEventListener('click', () => {
   timer.start(offerTime);
-  const funcTime = timer.start.bind();
 });
 
 const options = {
@@ -41,15 +40,16 @@ const timer = {
 
   start() {
     const currentTime = Date.now();
-
+    ref.input.setAttribute('disabled', '');
+    ref.start.setAttribute('disabled', '');
     this.intervalId = setInterval(() => {
       const currentTime = Date.now();
       const { days, hours, minutes, seconds } = timer.convertMs(
         offerTime - currentTime
       );
       if (currentTime >= offerTime) {
-        this.stop();
         Report.success('Success', 'Timer is over', 'Okay');
+        this.stop();
         return;
       }
       ref.days.textContent = days;
